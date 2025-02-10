@@ -12,23 +12,22 @@ std::optional<Vector3D> Segment3D::Intersect(const Segment3D& first, const Segme
     Vector3D D = second.end;
 
     const Vector3D AB = B - A;
+
     Vector3D AC = C - A;
     Vector3D CD = D - C;
 
     Vector3D cross = Vector3D::cross(AB, AC);
-    double cross_length = cross.length();
     // Точка C лежит на одной прямой с AB.
-    if (cross_length < epsilon) {
+    if (cross.length() < epsilon) {
         std::swap(C, D);
 
-        Vector3D AC = C - A;
-        Vector3D CD = D - C;
+        AC = C - A;
+        CD = D - C;
 
         cross = Vector3D::cross(AB, AC);
-        cross_length = cross.length();
 
         // Обе точки лежат на одной прямой с AB.
-        if (cross_length < epsilon)
+        if (cross.length() < epsilon)
             return {};
     }
 
@@ -59,7 +58,7 @@ std::optional<Vector3D> Segment3D::Intersect(const Segment3D& first, const Segme
     /*if (std::fabs(C_p.Z) < epsilon && std::fabs(D_p.Z) < epsilon)
         return {};*/
 
-    // Trivial reject 2: Отрезок CD полностью в верхней либо нижней полуплоскости.
+        // Trivial reject 2: Отрезок CD полностью в верхней либо нижней полуплоскости.
     if ((C_p.Z > epsilon && D_p.Z > epsilon) || (C_p.Z < -epsilon && D_p.Z < -epsilon))
         return {};
 
