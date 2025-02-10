@@ -58,7 +58,7 @@ std::optional<Vector3D> Segment3D::Intersect(const Segment3D& first, const Segme
     /*if (std::fabs(C_p.Z) < epsilon && std::fabs(D_p.Z) < epsilon)
         return {};*/
 
-        // Trivial reject 2: Отрезок CD полностью в верхней либо нижней полуплоскости.
+    // Trivial reject 2: Отрезок CD полностью в верхней либо нижней полуплоскости.
     if ((C_p.Z > epsilon && D_p.Z > epsilon) || (C_p.Z < -epsilon && D_p.Z < -epsilon))
         return {};
 
