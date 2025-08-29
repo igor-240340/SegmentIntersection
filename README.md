@@ -1,3 +1,6 @@
 # SegmentIntersection
 
-Test assignment on implementation of 3D segment intersection.
+Test assignment on segment intersection in 3D.
+
+![](docs/img.png)
+
